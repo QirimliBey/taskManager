@@ -1,0 +1,18 @@
+// JDL definition for application 'TaskManager' generated with command 'jhipster export-jdl'
+
+entity Project {
+  name String
+}
+entity Client {
+  name String
+}
+entity Task {
+  name String,
+  taskId Integer,
+  clientId Integer,
+  startDate LocalDate,
+  endDate LocalDate,
+  finishDate LocalDate
+}
+paginate Project, Client, Task with infinite-scroll
+service Project, Client, Task with serviceClass
