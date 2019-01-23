@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];

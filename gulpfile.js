@@ -1,4 +1,4 @@
-// Generated on 2019-01-16 using generator-jhipster 4.14.5
+// Generated on 2019-01-22 using generator-jhipster 4.14.5
 'use strict';
 
 var gulp = require('gulp'),
@@ -100,7 +100,7 @@ gulp.task('html', function () {
     return gulp.src(config.app + 'app/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(templateCache({
-            module: 'taskmanagerApp',
+            module: 'taskManagerApp',
             root: 'app/',
             moduleSystem: 'IIFE'
         }))
@@ -109,7 +109,7 @@ gulp.task('html', function () {
 
 gulp.task('ngconstant:dev', function () {
     return ngConstant({
-        name: 'taskmanagerApp',
+        name: 'taskManagerApp',
         constants: {
             VERSION: util.parseVersion(),
             DEBUG_INFO_ENABLED: true,
@@ -124,7 +124,7 @@ gulp.task('ngconstant:dev', function () {
 
 gulp.task('ngconstant:prod', function () {
     return ngConstant({
-        name: 'taskmanagerApp',
+        name: 'taskManagerApp',
         constants: {
             VERSION: util.parseVersion(),
             DEBUG_INFO_ENABLED: false,

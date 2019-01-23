@@ -11,7 +11,7 @@
     };
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .component('jhiAlertError', jhiAlertError);
 
     jhiAlertErrorController.$inject = ['$scope', 'AlertService', '$rootScope'];
@@ -36,7 +36,7 @@
             );
         }
 
-        var cleanHttpErrorListener = $rootScope.$on('taskmanagerApp.httpError', function (event, httpResponse) {
+        var cleanHttpErrorListener = $rootScope.$on('taskManagerApp.httpError', function (event, httpResponse) {
             var i;
             event.stopPropagation();
             switch (httpResponse.status) {

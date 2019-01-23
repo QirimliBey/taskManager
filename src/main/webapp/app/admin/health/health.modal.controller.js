@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('taskmanagerApp')
+    angular.module('taskManagerApp')
         .controller('HealthModalController', HealthModalController);
 
     HealthModalController.$inject = ['$uibModalInstance', 'currentHealth', 'baseName', 'subSystemName'];

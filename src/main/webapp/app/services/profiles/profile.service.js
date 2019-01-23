@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .factory('ProfileService', ProfileService);
 
     ProfileService.$inject = ['$http'];

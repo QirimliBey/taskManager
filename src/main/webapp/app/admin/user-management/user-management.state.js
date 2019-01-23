@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
@@ -100,7 +100,7 @@
             url: '/{login}',
             data: {
                 authorities: ['ROLE_ADMIN'],
-                pageTitle: 'taskmanager'
+                pageTitle: 'TaskManager'
             },
             views: {
                 'content@': {

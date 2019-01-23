@@ -1,4 +1,4 @@
-# taskmanager
+# TaskManager
 This application was generated using JHipster 4.14.5, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.5](http://www.jhipster.tech/documentation-archive/v4.14.5).
 
 ## Development
@@ -33,7 +33,7 @@ For further instructions on how to develop with JHipster, have a look at [Using 
 
 ## Building for production
 
-To optimize the taskmanager application for production, run:
+To optimize the TaskManager application for production, run:
 
     ./mvnw -Pprod clean package
 

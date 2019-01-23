@@ -1,6 +1,6 @@
 package com.mycompany.myapp.security;
 
-import com.mycompany.myapp.TaskmanagerApp;
+import com.mycompany.myapp.TaskManagerApp;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.UserRepository;
 
@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @see DomainUserDetailsService
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TaskmanagerApp.class)
+@SpringBootTest(classes = TaskManagerApp.class)
 @Transactional
 public class DomainUserDetailsServiceIntTest {
 

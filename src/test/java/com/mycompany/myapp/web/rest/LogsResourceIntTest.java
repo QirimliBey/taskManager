@@ -1,6 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
-import com.mycompany.myapp.TaskmanagerApp;
+import com.mycompany.myapp.TaskManagerApp;
 import com.mycompany.myapp.web.rest.vm.LoggerVM;
 import ch.qos.logback.classic.AsyncAppender;
 import ch.qos.logback.classic.LoggerContext;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see LogsResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TaskmanagerApp.class)
+@SpringBootTest(classes = TaskManagerApp.class)
 public class LogsResourceIntTest {
 
     private MockMvc restLogsMockMvc;

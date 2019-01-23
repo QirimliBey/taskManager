@@ -15,6 +15,6 @@
     };
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .component('jhiItemCount', jhiItemCount);
 })();
