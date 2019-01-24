@@ -44,12 +44,6 @@ public class TaskResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_TASK_ID = 1;
-    private static final Integer UPDATED_TASK_ID = 2;
-
-    private static final Integer DEFAULT_CLIENT_ID = 1;
-    private static final Integer UPDATED_CLIENT_ID = 2;
-
     private static final LocalDate DEFAULT_START_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_START_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -101,8 +95,6 @@ public class TaskResourceIntTest {
     public static Task createEntity(EntityManager em) {
         Task task = new Task()
             .name(DEFAULT_NAME)
-            .taskId(DEFAULT_TASK_ID)
-            .clientId(DEFAULT_CLIENT_ID)
             .startDate(DEFAULT_START_DATE)
             .endDate(DEFAULT_END_DATE)
             .finishDate(DEFAULT_FINISH_DATE);
@@ -130,8 +122,6 @@ public class TaskResourceIntTest {
         assertThat(taskList).hasSize(databaseSizeBeforeCreate + 1);
         Task testTask = taskList.get(taskList.size() - 1);
         assertThat(testTask.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testTask.getTaskId()).isEqualTo(DEFAULT_TASK_ID);
-        assertThat(testTask.getClientId()).isEqualTo(DEFAULT_CLIENT_ID);
         assertThat(testTask.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testTask.getEndDate()).isEqualTo(DEFAULT_END_DATE);
         assertThat(testTask.getFinishDate()).isEqualTo(DEFAULT_FINISH_DATE);
@@ -168,8 +158,6 @@ public class TaskResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(task.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].taskId").value(hasItem(DEFAULT_TASK_ID)))
-            .andExpect(jsonPath("$.[*].clientId").value(hasItem(DEFAULT_CLIENT_ID)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))
             .andExpect(jsonPath("$.[*].finishDate").value(hasItem(DEFAULT_FINISH_DATE.toString())));
@@ -187,8 +175,6 @@ public class TaskResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(task.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.taskId").value(DEFAULT_TASK_ID))
-            .andExpect(jsonPath("$.clientId").value(DEFAULT_CLIENT_ID))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()))
             .andExpect(jsonPath("$.finishDate").value(DEFAULT_FINISH_DATE.toString()));
@@ -216,8 +202,6 @@ public class TaskResourceIntTest {
         em.detach(updatedTask);
         updatedTask
             .name(UPDATED_NAME)
-            .taskId(UPDATED_TASK_ID)
-            .clientId(UPDATED_CLIENT_ID)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .finishDate(UPDATED_FINISH_DATE);
@@ -232,8 +216,6 @@ public class TaskResourceIntTest {
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
         assertThat(testTask.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testTask.getTaskId()).isEqualTo(UPDATED_TASK_ID);
-        assertThat(testTask.getClientId()).isEqualTo(UPDATED_CLIENT_ID);
         assertThat(testTask.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testTask.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testTask.getFinishDate()).isEqualTo(UPDATED_FINISH_DATE);

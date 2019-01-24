@@ -5,9 +5,9 @@
         .module('taskManagerApp')
         .controller('TaskDetailController', TaskDetailController);
 
-    TaskDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Task'];
+    TaskDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Task', 'Client', 'Project'];
 
-    function TaskDetailController($scope, $rootScope, $stateParams, previousState, entity, Task) {
+    function TaskDetailController($scope, $rootScope, $stateParams, previousState, entity, Task, Client, Project) {
         var vm = this;
 
         vm.task = entity;

@@ -1,10 +1,13 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -24,12 +27,6 @@ public class Task implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "task_id")
-    private Integer taskId;
-
-    @Column(name = "client_id")
-    private Integer clientId;
-
     @Column(name = "start_date")
     private LocalDate startDate;
 
@@ -38,6 +35,19 @@ public class Task implements Serializable {
 
     @Column(name = "finish_date")
     private LocalDate finishDate;
+
+    @ManyToOne
+    private Client client;
+
+    @ManyToOne
+    private Project project;
+
+    @ManyToOne
+    private Task task;
+
+    @OneToMany(mappedBy = "task")
+    @JsonIgnore
+    private Set<Task> subTasks = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -59,32 +69,6 @@ public class Task implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getTaskId() {
-        return taskId;
-    }
-
-    public Task taskId(Integer taskId) {
-        this.taskId = taskId;
-        return this;
-    }
-
-    public void setTaskId(Integer taskId) {
-        this.taskId = taskId;
-    }
-
-    public Integer getClientId() {
-        return clientId;
-    }
-
-    public Task clientId(Integer clientId) {
-        this.clientId = clientId;
-        return this;
-    }
-
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
     }
 
     public LocalDate getStartDate() {
@@ -125,6 +109,70 @@ public class Task implements Serializable {
     public void setFinishDate(LocalDate finishDate) {
         this.finishDate = finishDate;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Task client(Client client) {
+        this.client = client;
+        return this;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public Task project(Project project) {
+        this.project = project;
+        return this;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public Task task(Task task) {
+        this.task = task;
+        return this;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public Set<Task> getSubTasks() {
+        return subTasks;
+    }
+
+    public Task subTasks(Set<Task> tasks) {
+        this.subTasks = tasks;
+        return this;
+    }
+
+    public Task addSubTasks(Task task) {
+        this.subTasks.add(task);
+        task.setTask(this);
+        return this;
+    }
+
+    public Task removeSubTasks(Task task) {
+        this.subTasks.remove(task);
+        task.setTask(null);
+        return this;
+    }
+
+    public void setSubTasks(Set<Task> tasks) {
+        this.subTasks = tasks;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -152,8 +200,6 @@ public class Task implements Serializable {
         return "Task{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", taskId=" + getTaskId() +
-            ", clientId=" + getClientId() +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
             ", finishDate='" + getFinishDate() + "'" +

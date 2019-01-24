@@ -96,8 +96,6 @@
                         entity: function () {
                             return {
                                 name: null,
-                                taskId: null,
-                                clientId: null,
                                 startDate: null,
                                 endDate: null,
                                 finishDate: null,

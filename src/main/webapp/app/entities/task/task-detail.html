@@ -8,14 +8,6 @@
         <dd>
             <span>{{vm.task.name}}</span>
         </dd>
-        <dt><span>Task Id</span></dt>
-        <dd>
-            <span>{{vm.task.taskId}}</span>
-        </dd>
-        <dt><span>Client Id</span></dt>
-        <dd>
-            <span>{{vm.task.clientId}}</span>
-        </dd>
         <dt><span>Start Date</span></dt>
         <dd>
             <span>{{vm.task.startDate | date:'mediumDate'}}</span>
@@ -27,6 +19,18 @@
         <dt><span>Finish Date</span></dt>
         <dd>
             <span>{{vm.task.finishDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Client</span></dt>
+        <dd>
+            <a ui-sref="client-detail({id:vm.task.client.id})">{{vm.task.client.name}}</a>
+        </dd>
+        <dt><span>Project</span></dt>
+        <dd>
+            <a ui-sref="project-detail({id:vm.task.project.id})">{{vm.task.project.name}}</a>
+        </dd>
+        <dt><span>Task</span></dt>
+        <dd>
+            <a ui-sref="task-detail({id:vm.task.task.id})">{{vm.task.task.name}}</a>
         </dd>
     </dl>
 

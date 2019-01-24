@@ -1,18 +1,26 @@
 // JDL definition for application 'TaskManager' generated with command 'jhipster export-jdl'
 
-entity Project {
+entity Project (project) {
   name String
 }
-entity Client {
+entity Client (client) {
   name String
 }
-entity Task {
+entity Task (task) {
   name String,
-  taskId Integer,
-  clientId Integer,
   startDate LocalDate,
   endDate LocalDate,
   finishDate LocalDate
 }
+
+relationship ManyToOne {
+  Task{client(name)} to Client{task(name)},
+  Task{project(name)} to Project{task(name)},
+  Task{task(name)} to Task{subTasks(name)}
+}
+relationship ManyToMany {
+  Project{client(name)} to Client{project(name)}
+}
+
 paginate Project, Client, Task with infinite-scroll
 service Project, Client, Task with serviceClass

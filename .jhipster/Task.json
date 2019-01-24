@@ -1,18 +1,35 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "client",
+            "otherEntityName": "client",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "task",
+            "otherEntityName": "task",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "subTasks",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "task"
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "taskId",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "clientId",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "startDate",

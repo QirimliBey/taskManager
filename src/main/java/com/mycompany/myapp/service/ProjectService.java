@@ -57,7 +57,7 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public Project findOne(Long id) {
         log.debug("Request to get Project : {}", id);
-        return projectRepository.findOne(id);
+        return projectRepository.findOneWithEagerRelationships(id);
     }
 
     /**

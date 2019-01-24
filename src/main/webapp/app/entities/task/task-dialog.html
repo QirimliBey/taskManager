@@ -20,18 +20,6 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_taskId">Task Id</label>
-            <input type="number" class="form-control" name="taskId" id="field_taskId"
-                    ng-model="vm.task.taskId"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_clientId">Client Id</label>
-            <input type="number" class="form-control" name="clientId" id="field_clientId"
-                    ng-model="vm.task.clientId"
-                    />
-        </div>
-        <div class="form-group">
             <label class="control-label" for="field_startDate">Start Date</label>
                 <div class="input-group">
                     <input id="field_startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.task.startDate" is-open="vm.datePickerOpenStatus.startDate"
@@ -62,6 +50,24 @@
                 </div>
         </div>
 
+        <div class="form-group">
+            <label for="field_client">Client</label>
+            <select class="form-control" id="field_client" name="client" ng-model="vm.task.client" ng-options="client as client.name for client in vm.clients track by client.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_project">Project</label>
+            <select class="form-control" id="field_project" name="project" ng-model="vm.task.project" ng-options="project as project.name for project in vm.projects track by project.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_task">Task</label>
+            <select class="form-control" id="field_task" name="task" ng-model="vm.task.task" ng-options="task as task.name for task in vm.tasks track by task.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

@@ -25,14 +25,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="task_id" type="integer">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="client_id" type="integer">
-                <constraints nullable="true" />
-            </column>
-
             <column name="start_date" type="date">
                 <constraints nullable="true" />
             </column>
@@ -42,6 +34,18 @@
             </column>
 
             <column name="finish_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="client_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="project_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="task_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
