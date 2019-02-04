@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service;
 
+import com.mycompany.myapp.domain.Client;
 import com.mycompany.myapp.domain.Project;
 import com.mycompany.myapp.repository.ProjectRepository;
 import org.slf4j.Logger;
@@ -61,6 +62,19 @@ public class ProjectService {
     }
 
     /**
+     * Get one project clients.
+     *
+     * @param id the id of the entity
+     * @param pageble the pagination information
+     * @return the list of entities
+     */
+     @Transactional(readOnly = true)
+     public Page<Client> findProjectClients(Long id, Pageable pageble) {
+         log.debug("Request to get Project clients");
+         return projectRepository.findAllClientsOfProject(id, pageble);
+     }
+
+    /**
      * Delete the project by id.
      *
      * @param id the id of the entity
@@ -69,4 +83,6 @@ public class ProjectService {
         log.debug("Request to delete Project : {}", id);
         projectRepository.delete(id);
     }
+
+
 }

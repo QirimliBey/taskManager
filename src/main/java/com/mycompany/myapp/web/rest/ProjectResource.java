@@ -1,7 +1,9 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Client;
 import com.mycompany.myapp.domain.Project;
+import com.mycompany.myapp.service.ClientService;
 import com.mycompany.myapp.service.ProjectService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -10,6 +12,8 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,6 +25,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing Project.
@@ -34,6 +39,8 @@ public class ProjectResource {
     private static final String ENTITY_NAME = "project";
 
     private final ProjectService projectService;
+
+    private final ClientService clientService = null;
 
     public ProjectResource(ProjectService projectService) {
         this.projectService = projectService;
@@ -82,6 +89,34 @@ public class ProjectResource {
     }
 
     /**
+     * PUT  /projects/:id/client : Adds client to an existing project.
+     *
+     * @param client the client to add it to the project
+     * @param projectId the id of project to which will add the client
+     * @return the ResponseEntity with status 200 (OK) and with body the updated project,
+     * or with status 400 (Bad Request) if the project is not valid,
+     * or with status 500 (Internal Server Error) if the project couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PutMapping("/projects/{id}/client")
+    @Timed
+    public ResponseEntity<Client> addProjectClient(@RequestBody Client client, Long projectId) throws URISyntaxException {
+        log.debug("REST request to add Client to Project by project id : {}, []", client, projectId);
+        if (client.getId() == null) {
+            //return not exist such client
+            return ResponseEntity.status(404).body(client);
+        }
+        client = clientService.findOne(client.getId());
+        Project project = projectService.findOne(projectId);
+        project.addClient(client);
+        project = projectService.save(project);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, client.getId().toString()))
+            .body(client);
+
+    }
+
+    /**
      * GET  /projects : get all the projects.
      *
      * @param pageable the pagination information
@@ -108,6 +143,25 @@ public class ProjectResource {
         log.debug("REST request to get Project : {}", id);
         Project project = projectService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(project));
+    }
+
+    /**
+     * GET  /projects/:id/clients : get clients of project from the "id" of project.
+     *
+     * @param pageable the pagination information
+     * @param id the id of the project to retrieve
+     * @return the ResponseEntity with status 200 (OK) and the list of projects in body
+     */
+    @GetMapping("/projects/{id}/clients")
+    @Timed
+    public ResponseEntity<List<Client>> getProjectClients(Pageable pageable, @PathVariable Long id) {
+        log.debug("REST request to get Project clients : {}", id);
+        /*Project project = projectService.findOne(id);
+        Set<Client> clients = project.getClients();
+        return clients;*/
+        Page<Client> page = projectService.findProjectClients(id ,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/projects/:id/clients");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
