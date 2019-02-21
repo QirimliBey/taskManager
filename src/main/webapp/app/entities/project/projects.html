@@ -1,6 +1,37 @@
-<div>
-    <h2>Projects</h2>
-    <jhi-alert></jhi-alert>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4 no-padding-left">
+            <button class="btn btn-primary" ui-sref="project.new" >
+                <span class="glyphicon glyphicon-plus"></span>
+                <span >
+                        Create new Project
+                    </span>
+            </button>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="table-responsive">
+    <table class="jh-table table table-striped">
+
+        <div class="project_list" infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+           <div class="project_block" ng-repeat="project in vm.projects track by project.id">
+
+                <div class="header">
+                    <span class="project_pic"></span>
+                    <div><p clas="project_name">{{project.name}}</p></div>
+                </div>
+                <div class="line"></div>
+                <div class="project_description">Description area</div>
+                <div type="submit" class="buttons">
+                    <a ui-sref="project-detail({id:project.id})" class="project_open" href="#">Open</a><a ui-sref="project.delete({id:project.id})" class="project_remove" href="#">Remove</a>
+                </div>
+
+
+            </div>
+        </div>
+
+    <!--&lt;!&ndash;<jhi-alert></jhi-aler   t>&ndash;&gt;
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
@@ -41,9 +72,7 @@
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
-                            <button type="submit"
-                                    ui-sref="project.delete({id:project.id})"
-                                    class="btn btn-danger btn-sm">
+                            <button type="submit" ui-sref="project.delete({id:project.id})" class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
@@ -52,5 +81,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div>-->
 </div>
