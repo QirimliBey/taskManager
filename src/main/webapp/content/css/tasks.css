@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Shrikhand');
+
+
+.tasks-body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  background-color: #DAD6D0;
+  background-size: cover;
+}
+
+.board {
+  margin-top: 20vh;
+
+  h1 {
+    color: rgb(35,37,36);
+    font-family: 'Shrikhand', cursive;
+    font-size: 50px;
+  }
+
+  .create-column {
+    width: 250px;
+    padding: 6px;
+    margin: 25px auto;
+    border-radius: 25px;
+    font-size: 20px;
+    line-height: 40px;
+
+    &:active {
+      background-color: rgb(255, 123, 0);
+      box-shadow: 0 3px rgb(145, 102, 63);
+      transform: translateY(4px);
+    }
+  }
+}
+
+.column-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .column {
+    display: inline-block;
+    vertical-align: top;
+    margin: 20px;
+    padding: 25px;
+    background-color: rgb(243,204,113);
+
+    .column-title {
+      text-align: center;
+      color: rgb(35,37,36);
+      font-weight: 900;
+    }
+
+    .add-card {
+      margin-top: 10px;
+      font-weight: 500;
+      padding: 8px 20px;
+      font-size: 14px;
+      border-radius: 20px;
+    }
+
+    .delete {
+      float: right;
+      margin: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 20px;
+
+      &:before {
+        font-family: FontAwesome;
+        content: "\F00D";
+      }
+    }
+  }
+}
+
+.button {
+  background-color: #F5AA00;
+  color: #efffc8;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+      display: grid;
+      grid-template-columns: repeat(3, 270px);
+
+  &:hover {
+    background-color: rgb(255, 123, 0);
+  }
+}
+
+.column-card-list {
+  min-height: 200px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style-type: none;
+
+  .card {
+    text-align: center;
+    color: #000;
+    margin-top: 20px;
+
+    .card-description {
+      padding: 15px;
+      background: #efffc8;
+      min-height: 56px;
+      cursor: pointer;
+      font-size: 20px;
+      color: rgb(35,37,36);
+    }
+  }
+}
+
+footer {
+  font-size: 14px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px 0;
+  background-color: none;
+  color: #F5AA00;
+}

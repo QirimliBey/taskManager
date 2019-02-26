@@ -1,0 +1,9 @@
+<!--<div class="project_description" ui-sref="project.description" ui-sref-active="activeState">-->
+    <ul ng-repeat="client in vm.project.clients">
+        <li>
+            <a ui-sref="client-detail({id:client.id})">{{client.name}}</a>{{$last ? '' : ', '}}
+        </li>
+    </ul>
+
+<!--</div>-->
+

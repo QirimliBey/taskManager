@@ -8,6 +8,13 @@
         <dd>
             <span>{{vm.client.name}}</span>
         </dd>
+        <dt><span>Project</span></dt>
+        <dd>
+            <span ng-repeat="project in vm.client.projects track by project.id">
+                <a ui-sref="project-detail({id: project.id})">{{project.name}}</a>{{$last ? '' : ', '}}
+            </span>
+            <!--<span>{{vm.client.projects[0].name}}</span>-->
+        </dd>
     </dl>
 
     <button type="submit"

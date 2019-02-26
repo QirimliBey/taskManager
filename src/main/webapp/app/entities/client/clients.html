@@ -1,4 +1,39 @@
 <div>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="client.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Client
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cards" infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+
+        <div class="user-card-item" ng-repeat="client in vm.clients track by client.id">
+            <div class="user-card">
+                <div class="user-card-pb card__image--fence"></div>
+                <div class="user-card-img"></div>
+                <div class="user-card-cont">
+                    <div class="user-card-title">{{client.name}}</div>
+                    <p class="user-id"></p>
+                    <p class="user-card-text">Developer</p>
+                </div>
+                <div class="button-row"><button ui-sref="client-detail({id:client.id})"><i class="far fa-id-card edit-btn"></i> Profile</button><button ui-sref="client.delete({id:client.id})"><i class="fas fa-trash-alt edit-btn red"></i> Remove</button></div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+<!--<div>
     <h2>Clients</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
@@ -53,4 +88,5 @@
             </tbody>
         </table>
     </div>
+</div>-->
 </div>

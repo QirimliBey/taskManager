@@ -1,6 +1,7 @@
 package com.mycompany.myapp.service;
 
 import com.mycompany.myapp.domain.Client;
+import com.mycompany.myapp.domain.Project;
 import com.mycompany.myapp.repository.ClientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +58,22 @@ public class ClientService {
     @Transactional(readOnly = true)
     public Client findOne(Long id) {
         log.debug("Request to get Client : {}", id);
-        return clientRepository.findOne(id);
+        Client oneWithEagerRelationships = clientRepository.findOneWithEagerRelationships(id);
+        //return clientRepository.findOneWithEagerRelationships(id);
+        return oneWithEagerRelationships;
+    }
+
+    /**
+     * Get client projects.
+     *
+     * @param id the id of the entity
+     * @param pageble the pagination information
+     * @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<Project> findClientProjects(Long id, Pageable pageble) {
+        log.debug("Request to get Client projects");
+        return clientRepository.findAllProjectsOfClient(id, pageble);
     }
 
     /**

@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
     @Query("select distinct project from Project project left join fetch project.clients")
-    List<Project> findAllWithEagerRelationships();
+    List<Client> findAllWithEagerRelationships();
 
     @Query("select project from Project project left join fetch project.clients where project.id =:id")
     Project findOneWithEagerRelationships(@Param("id") Long id);

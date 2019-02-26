@@ -26,7 +26,7 @@ public class Project implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "project_client",
                joinColumns = @JoinColumn(name="projects_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="clients_id", referencedColumnName="id"))

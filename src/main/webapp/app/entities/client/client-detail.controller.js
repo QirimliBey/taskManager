@@ -13,6 +13,10 @@
         vm.client = entity;
         vm.previousState = previousState.name;
 
+        Client.getProjects({id: vm.client.id}, function(data){
+            vm.client.projects = data;
+        });
+
         var unsubscribe = $rootScope.$on('taskManagerApp:clientUpdate', function(event, result) {
             vm.client = result;
         });

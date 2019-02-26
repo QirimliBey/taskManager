@@ -46,7 +46,9 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public Page<Project> findAll(Pageable pageable) {
         log.debug("Request to get all Projects");
-        return projectRepository.findAll(pageable);
+        Page<Project> projects = projectRepository.findAll(pageable);
+        return projects;
+
     }
 
     /**
@@ -58,21 +60,23 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public Project findOne(Long id) {
         log.debug("Request to get Project : {}", id);
-        return projectRepository.findOneWithEagerRelationships(id);
+        Project oneWithEagerRelationships = projectRepository.findOneWithEagerRelationships(id);
+        return oneWithEagerRelationships;
     }
 
     /**
-     * Get one project clients.
+     * Get project clients.
      *
      * @param id the id of the entity
      * @param pageble the pagination information
      * @return the list of entities
      */
-     @Transactional(readOnly = true)
-     public Page<Client> findProjectClients(Long id, Pageable pageble) {
-         log.debug("Request to get Project clients");
-         return projectRepository.findAllClientsOfProject(id, pageble);
-     }
+    @Transactional(readOnly = true)
+    public Page<Client> findProjectClients(Long id, Pageable pageble) {
+        log.debug("Request to get Project clients");
+        return projectRepository.findAllClientsOfProject(id, pageble);
+    }
+
 
     /**
      * Delete the project by id.

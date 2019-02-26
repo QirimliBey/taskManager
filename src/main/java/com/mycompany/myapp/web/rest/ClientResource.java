@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Client;
+import com.mycompany.myapp.domain.Project;
 import com.mycompany.myapp.service.ClientService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -108,6 +109,22 @@ public class ClientResource {
         log.debug("REST request to get Client : {}", id);
         Client client = clientService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(client));
+    }
+
+    /**
+     * GET  /clients/:id/projects : get projects of client from the "id" of client.
+     *
+     * @param pageable the pagination information
+     * @param id the id of the project to retrieve
+     * @return the ResponseEntity with status 200 (OK) and the list of projects in body
+     */
+    @GetMapping("/clients/{id}/projects")
+    @Timed
+    public ResponseEntity<List<Project>> getClientProjects(Pageable pageable, @PathVariable Long id) {
+        log.debug("REST request to get Client Projects : {}", id);
+        Page<Project> page = clientService.findClientProjects(id ,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/clients/:id/projects");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
