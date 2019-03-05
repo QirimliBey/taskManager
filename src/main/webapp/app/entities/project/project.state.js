@@ -26,31 +26,6 @@
             resolve: {
             }
         })
-        /*.state('project.description', {
-            parent: 'entity'
-            url: '/',
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/project/project-description.html',
-                    controller: 'ProjectDetailController',
-                    controllerAs: 'vm'
-                }
-            },
-            resolve: {
-                entity: ['$stateParams', 'Project', function($stateParams, Project) {
-                    return Project.get({id : $stateParams.id}).$promise;
-                }],
-                previousState: ["$state", function ($state) {
-                    var currentStateData = {
-                        name: $state.current.name || 'project',
-                        params: $state.params,
-                        url: $state.href($state.current.name, $state.params)
-                    };
-                    return currentStateData;
-                }]
-            }
-         })*/
-
         .state('project-detail', {
             parent: 'project',
             url: '/project/{id}',

@@ -46,9 +46,7 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public Page<Project> findAll(Pageable pageable) {
         log.debug("Request to get all Projects");
-        Page<Project> projects = projectRepository.findAll(pageable);
-        return projects;
-
+        return projectRepository.findAll(pageable);
     }
 
     /**

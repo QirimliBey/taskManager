@@ -11,8 +11,8 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "task",
-            "otherEntityName": "task",
+            "relationshipName": "workspace",
+            "otherEntityName": "workspace",
             "otherEntityRelationshipName": "project"
         }
     ],

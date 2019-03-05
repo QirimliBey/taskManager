@@ -40,10 +40,10 @@ public class Task implements Serializable {
     private Client client;
 
     @ManyToOne
-    private Project project;
+    private Task task;
 
     @ManyToOne
-    private Task task;
+    private WorkspaceColumn workspaceColumn;
 
     @OneToMany(mappedBy = "task")
     @JsonIgnore
@@ -123,19 +123,6 @@ public class Task implements Serializable {
         this.client = client;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public Task project(Project project) {
-        this.project = project;
-        return this;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
     public Task getTask() {
         return task;
     }
@@ -147,6 +134,19 @@ public class Task implements Serializable {
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    public WorkspaceColumn getWorkspaceColumn() {
+        return workspaceColumn;
+    }
+
+    public Task workspaceColumn(WorkspaceColumn workspaceColumn) {
+        this.workspaceColumn = workspaceColumn;
+        return this;
+    }
+
+    public void setWorkspaceColumn(WorkspaceColumn workspaceColumn) {
+        this.workspaceColumn = workspaceColumn;
     }
 
     public Set<Task> getSubTasks() {

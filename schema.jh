@@ -6,6 +6,15 @@ entity Project (project) {
 entity Client (client) {
   name String
 }
+
+entity Workspace (workspace) {
+  name String,
+}
+
+entity WorkspaceColumn (workspaceColumn) {
+  name String,
+}
+
 entity Task (task) {
   name String,
   startDate LocalDate,
@@ -15,12 +24,14 @@ entity Task (task) {
 
 relationship ManyToOne {
   Task{client(name)} to Client{task(name)},
-  Task{project(name)} to Project{task(name)},
-  Task{task(name)} to Task{subTasks(name)}
+  Task{task(name)} to Task{subTasks(name)},
+  Workspace{project(name)} to Project{workspace(name)}
+  WorkspaceColumn{workspace(name)} to Workspace{workspaceColumn(name)}
+  Task{workspaceColumn(name)} to WorkspaceColumn{task(name)}
 }
 relationship ManyToMany {
   Project{client(name)} to Client{project(name)}
 }
 
-paginate Project, Client, Task with infinite-scroll
-service Project, Client, Task with serviceClass
+paginate Project, Client, Task, Workspace, WorkspaceColumn with infinite-scroll
+service Project, Client, Task, Workspace, WorkspaceColumn with serviceClass

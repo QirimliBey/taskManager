@@ -24,13 +24,13 @@
         <dd>
             <a ui-sref="client-detail({id:vm.task.client.id})">{{vm.task.client.name}}</a>
         </dd>
-        <dt><span>Project</span></dt>
-        <dd>
-            <a ui-sref="project-detail({id:vm.task.project.id})">{{vm.task.project.name}}</a>
-        </dd>
         <dt><span>Task</span></dt>
         <dd>
             <a ui-sref="task-detail({id:vm.task.task.id})">{{vm.task.task.name}}</a>
+        </dd>
+        <dt><span>Workspace Column</span></dt>
+        <dd>
+            <a ui-sref="workspace-column-detail({id:vm.task.workspaceColumn.id})">{{vm.task.workspaceColumn.name}}</a>
         </dd>
     </dl>
 

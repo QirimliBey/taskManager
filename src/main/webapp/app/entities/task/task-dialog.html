@@ -57,14 +57,14 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="field_project">Project</label>
-            <select class="form-control" id="field_project" name="project" ng-model="vm.task.project" ng-options="project as project.name for project in vm.projects track by project.id">
+            <label for="field_task">Task</label>
+            <select class="form-control" id="field_task" name="task" ng-model="vm.task.task" ng-options="task as task.name for task in vm.tasks track by task.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_task">Task</label>
-            <select class="form-control" id="field_task" name="task" ng-model="vm.task.task" ng-options="task as task.name for task in vm.tasks track by task.id">
+            <label for="field_workspaceColumn">Workspace Column</label>
+            <select class="form-control" id="field_workspaceColumn" name="workspaceColumn" ng-model="vm.task.workspaceColumn" ng-options="workspaceColumn as workspaceColumn.name for workspaceColumn in vm.workspacecolumns track by workspaceColumn.id">
                 <option value=""></option>
             </select>
         </div>

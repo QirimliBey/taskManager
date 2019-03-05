@@ -34,7 +34,7 @@ public class Project implements Serializable {
 
     @OneToMany(mappedBy = "project")
     @JsonIgnore
-    private Set<Task> tasks = new HashSet<>();
+    private Set<Workspace> workspaces = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -83,29 +83,29 @@ public class Project implements Serializable {
         this.clients = clients;
     }
 
-    public Set<Task> getTasks() {
-        return tasks;
+    public Set<Workspace> getWorkspaces() {
+        return workspaces;
     }
 
-    public Project tasks(Set<Task> tasks) {
-        this.tasks = tasks;
+    public Project workspaces(Set<Workspace> workspaces) {
+        this.workspaces = workspaces;
         return this;
     }
 
-    public Project addTask(Task task) {
-        this.tasks.add(task);
-        task.setProject(this);
+    public Project addWorkspace(Workspace workspace) {
+        this.workspaces.add(workspace);
+        workspace.setProject(this);
         return this;
     }
 
-    public Project removeTask(Task task) {
-        this.tasks.remove(task);
-        task.setProject(null);
+    public Project removeWorkspace(Workspace workspace) {
+        this.workspaces.remove(workspace);
+        workspace.setProject(null);
         return this;
     }
 
-    public void setTasks(Set<Task> tasks) {
-        this.tasks = tasks;
+    public void setWorkspaces(Set<Workspace> workspaces) {
+        this.workspaces = workspaces;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
