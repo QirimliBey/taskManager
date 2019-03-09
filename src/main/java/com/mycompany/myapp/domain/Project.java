@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
+
+
 /**
  * A Project.
  */
@@ -32,7 +34,7 @@ public class Project implements Serializable {
                inverseJoinColumns = @JoinColumn(name="clients_id", referencedColumnName="id"))
     private Set<Client> clients = new HashSet<>();
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Workspace> workspaces = new HashSet<>();
 

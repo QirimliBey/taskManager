@@ -3,14 +3,18 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Client;
 import com.mycompany.myapp.domain.Project;
+import com.mycompany.myapp.domain.Workspace;
 import com.mycompany.myapp.service.ClientService;
 import com.mycompany.myapp.service.ProjectService;
+import com.mycompany.myapp.service.WorkspaceService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.hibernate.service.spi.InjectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -40,10 +44,11 @@ public class ProjectResource {
 
     private final ProjectService projectService;
 
-    private final ClientService clientService = null;
+    private final WorkspaceService workspaceService;
 
-    public ProjectResource(ProjectService projectService) {
+    public ProjectResource(ProjectService projectService, WorkspaceService workspaceService) {
         this.projectService = projectService;
+        this.workspaceService = workspaceService;
     }
 
     /**
@@ -89,7 +94,7 @@ public class ProjectResource {
     }
 
     /**
-     * PUT  /projects/:id/client : Adds client to an existing project.
+     * PUT  /projects/:id/clients : Adds client to an existing project.
      *
      * @param client the client to add it to the project
      * @param projectId the id of project to which will add the client
@@ -98,7 +103,7 @@ public class ProjectResource {
      * or with status 500 (Internal Server Error) if the project couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PutMapping("/projects/{id}/client")
+    @PutMapping("/projects/{id}/clients")
     @Timed
     public ResponseEntity<Client> addProjectClient(@RequestBody Client client, Long projectId) throws URISyntaxException {
         log.debug("REST request to add Client to Project by project id : {}, []", client, projectId);
@@ -106,14 +111,40 @@ public class ProjectResource {
             //return not exist such client
             return ResponseEntity.status(404).body(client);
         }
-        client = clientService.findOne(client.getId());
+        /*client = clientService.findOne(client.getId());*/
         Project project = projectService.findOne(projectId);
         project.addClient(client);
-        project = projectService.save(project);
+        projectService.save(project);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, client.getId().toString()))
             .body(client);
+    }
 
+    /**
+     * PUT  /projects/:id/workspaces : Adds workspace to an existing project.
+     *
+     * @param workspace the workspace to add it to the project
+     * @param projectId the id of project to which will be added the workspace
+     * @return the ResponseEntity with status 200 (OK) and with body the updated project,
+     * or with status 400 (Bad Request) if the project is not valid,
+     * or with status 500 (Internal Server Error) if the project couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PutMapping("/projects/{id}/workspaces")
+    @Timed
+    public ResponseEntity<Workspace> addProjectWorkspace(@RequestBody Workspace workspace, Long projectId) throws URISyntaxException {
+        log.debug("REST request to add Workspace to Project by project id : {}, []", workspace, projectId);
+        if (workspace.getId() == null) {
+            //return not exist such workspace
+            return ResponseEntity.status(404).body(workspace);
+        }
+        Project project = projectService.findOne(projectId);
+        project.addWorkspace(workspace);
+        workspaceService.save(workspace);
+        projectService.save(project);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, workspace.getId().toString()))
+            .body(workspace);
     }
 
     /**
@@ -156,11 +187,24 @@ public class ProjectResource {
     @Timed
     public ResponseEntity<List<Client>> getProjectClients(Pageable pageable, @PathVariable Long id) {
         log.debug("REST request to get Project clients : {}", id);
-        /*Project project = projectService.findOne(id);
-        Set<Client> clients = project.getClients();
-        return clients;*/
         Page<Client> page = projectService.findProjectClients(id ,pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/projects/:id/clients");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET  /projects/:id/workspaces : get workspaces of project from the "id" of project.
+     *
+     * @param pageable the pagination information
+     * @param id the id of the project to retrieve
+     * @return the ResponseEntity with status 200 (OK) and the list of projects in body
+     */
+    @GetMapping("/projects/{id}/workspaces")
+    @Timed
+    public ResponseEntity<List<Workspace>> getProjectWorkspaces(Pageable pageable, @PathVariable Long id) {
+        log.debug("REST request to get Project workspaces : {}", id);
+        Page<Workspace> page = projectService.findProjectWorkspaces(id ,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/projects/:id/workspaces");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

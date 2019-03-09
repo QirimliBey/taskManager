@@ -5,6 +5,7 @@ import com.mycompany.myapp.TaskManagerApp;
 import com.mycompany.myapp.domain.Project;
 import com.mycompany.myapp.repository.ProjectRepository;
 import com.mycompany.myapp.service.ProjectService;
+import com.mycompany.myapp.service.WorkspaceService;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -49,6 +50,9 @@ public class ProjectResourceIntTest {
     private ProjectService projectService;
 
     @Autowired
+    private WorkspaceService workspaceService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -67,7 +71,7 @@ public class ProjectResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ProjectResource projectResource = new ProjectResource(projectService);
+        final ProjectResource projectResource = new ProjectResource(projectService, workspaceService);
         this.restProjectMockMvc = MockMvcBuilders.standaloneSetup(projectResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

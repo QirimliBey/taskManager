@@ -29,7 +29,7 @@ public class Workspace implements Serializable {
     @ManyToOne
     private Project project;
 
-    @OneToMany(mappedBy = "workspace")
+    @OneToMany(mappedBy = "workspace", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<WorkspaceColumn> workspaceColumns = new HashSet<>();
 

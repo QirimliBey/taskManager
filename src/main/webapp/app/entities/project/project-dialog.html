@@ -24,6 +24,11 @@
             <label for="field_client">Client</label>
             <select class="form-control" id="field_client" multiple name="client" ng-model="vm.project.clients" ng-options="client as client.name for client in vm.clients track by client.id"></select>
         </div>
+
+        <div class="form-group">
+            <label for="field_workspace">Workspace</label>
+            <select class="form-control" id="field_workspace" multiple name="workspace" ng-model="vm.project.workspaces" ng-options="workspace as workspace.name for workspace in vm.workspaces track by workspace.id"></select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

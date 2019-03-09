@@ -7,7 +7,7 @@
     Project.$inject = ['$resource'];
 
     function Project ($resource) {
-        var resourceUrl =  'api/projects/:id';
+        var resourceUrl =  'api/projects/:id/:dst1';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
@@ -20,7 +20,16 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            /*'addWorkspace': {
+                method:'PUT',
+                params: {dst1: "workspaces"}
+            },*/
+            'getWorkspaces': {
+                method:'GET',
+                params: {dst1: "workspaces"},
+                isArray: true
+            }
         });
     }
 })();

@@ -16,6 +16,13 @@
         vm.clients = Client.query();
         vm.workspaces = Workspace.query();
 
+
+        /*Project.addWorkspace({id: vm.project.id}, function(data){
+            vm.project.workspaces = data;
+        });*/
+
+
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });

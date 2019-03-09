@@ -14,6 +14,12 @@
                 <a ui-sref="client-detail({id: client.id})">{{client.name}}</a>{{$last ? '' : ', '}}
             </span>
         </dd>
+        <dt><span>Workspace</span></dt>
+        <dd>
+            <span ng-repeat="workspace in vm.project.workspaces">
+                <a ui-sref="workspace-detail({id: workspace.id})">{{workspace.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
     </dl>
 
     <button type="submit"
