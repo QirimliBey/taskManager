@@ -155,6 +155,34 @@
                     $state.go('^');
                 });
             }]
+        })
+        .state('project-detail.workspacesNew', {
+            parent: 'project-detail',
+            url: '/detail/workspacesNew',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                templateUrl: 'app/entities/workspace/workspace-dialog.html',
+                controller: 'WorkspaceDialogController',
+                controllerAs: 'vm',
+                backdrop: 'static',
+                size: 'lg',
+                resolve: {
+                    entity: function () {
+                        return {
+                        name: null,
+                        id: null
+                        };
+                    }
+                }
+                }).result.then(function() {
+                    $state.go('^', null, { reload: 'project-detail' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 
