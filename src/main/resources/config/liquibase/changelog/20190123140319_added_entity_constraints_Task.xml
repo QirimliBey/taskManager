@@ -26,5 +26,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="workspace_column"/>
 
+        <addForeignKeyConstraint baseColumnNames="workspace_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_workspace_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="workspace"/>
+
     </changeSet>
 </databaseChangeLog>

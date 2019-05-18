@@ -45,6 +45,9 @@ public class Task implements Serializable {
     @ManyToOne
     private WorkspaceColumn workspaceColumn;
 
+    @ManyToOne
+    private Workspace workspace;
+
     @OneToMany(mappedBy = "task")
     @JsonIgnore
     private Set<Task> subTasks = new HashSet<>();
@@ -147,6 +150,19 @@ public class Task implements Serializable {
 
     public void setWorkspaceColumn(WorkspaceColumn workspaceColumn) {
         this.workspaceColumn = workspaceColumn;
+    }
+
+    public Workspace getWorkspace() {
+        return workspace;
+    }
+
+    public Task workspace(Workspace workspace) {
+        this.workspace = workspace;
+        return this;
+    }
+
+    public void setWorkspace(Workspace workspace) {
+        this.workspace = workspace;
     }
 
     public Set<Task> getSubTasks() {

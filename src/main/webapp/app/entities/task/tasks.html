@@ -26,6 +26,7 @@
                     <th jh-sort-by="client.name"><span>Client</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="task.name"><span>Task</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="workspaceColumn.name"><span>Workspace Column</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="workspace.name"><span>Workspace</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -44,6 +45,9 @@
                     </td>
                     <td>
                         <a ui-sref="workspace-column-detail({id:task.workspaceColumn.id})">{{task.workspaceColumn.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="workspace-detail({id:task.workspace.id})">{{task.workspace.name}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -12,6 +12,12 @@
             "relationshipName": "workspaceColumn",
             "otherEntityName": "workspaceColumn",
             "otherEntityRelationshipName": "workspace"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "task",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "workspace"
         }
     ],
     "fields": [

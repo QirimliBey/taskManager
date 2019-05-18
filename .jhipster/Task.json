@@ -9,14 +9,20 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "project",
-            "otherEntityName": "project",
+            "relationshipName": "task",
+            "otherEntityName": "task",
             "otherEntityField": "name"
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "task",
-            "otherEntityName": "task",
+            "relationshipName": "workspaceColumn",
+            "otherEntityName": "workspaceColumn",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "workspace",
+            "otherEntityName": "workspace",
             "otherEntityField": "name"
         },
         {

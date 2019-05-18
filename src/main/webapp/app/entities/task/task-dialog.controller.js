@@ -5,9 +5,9 @@
         .module('taskManagerApp')
         .controller('TaskDialogController', TaskDialogController);
 
-    TaskDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Task', 'Client', 'WorkspaceColumn'];
+    TaskDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Task', 'Client', 'WorkspaceColumn', 'Workspace'];
 
-    function TaskDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Task, Client, WorkspaceColumn) {
+    function TaskDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Task, Client, WorkspaceColumn, Workspace) {
         var vm = this;
 
         vm.task = entity;
@@ -18,6 +18,7 @@
         vm.clients = Client.query();
         vm.tasks = Task.query();
         vm.workspacecolumns = WorkspaceColumn.query();
+        vm.workspaces = Workspace.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

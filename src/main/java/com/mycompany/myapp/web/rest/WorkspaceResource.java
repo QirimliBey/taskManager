@@ -1,6 +1,7 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Task;
 import com.mycompany.myapp.domain.Workspace;
 import com.mycompany.myapp.service.WorkspaceService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
@@ -108,6 +109,23 @@ public class WorkspaceResource {
         log.debug("REST request to get Workspace : {}", id);
         Workspace workspace = workspaceService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(workspace));
+    }
+
+    /**
+     * GET  /workspaces/:id/Tasks : get tasks of workspace from the "id" of workspace.
+     *
+     * @param pageable the pagination information
+     * @param id the id of the workspace to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the workspace, or with status 404 (Not Found)
+     */
+    @GetMapping("/workspaces/{id}/tasks")
+    @Timed
+    public ResponseEntity<List<Task>> getWorkspaceTasks(Pageable pageable, @PathVariable Long id) {
+        log.debug("REST request to get Workspace : {} tasks", id);
+
+        Page<Task> page = workspaceService.findWorkspaceTasks(id ,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/workspaces/:id/tasks");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**

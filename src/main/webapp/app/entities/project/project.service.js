@@ -21,10 +21,12 @@
                 }
             },
             'update': { method:'PUT' },
-            /*'addWorkspace': {
+
+            'addWorkspace': {
                 method:'PUT',
                 params: {dst1: "workspaces"}
-            },*/
+            },
+
             'getWorkspaces': {
                 method:'GET',
                 params: {dst1: "workspaces"},

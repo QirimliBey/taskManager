@@ -158,7 +158,7 @@
         })
         .state('project-detail.workspacesNew', {
             parent: 'project-detail',
-            url: '/detail/workspacesNew',
+            url: '/detail/workspaces/new',
             data: {
                 authorities: ['ROLE_USER']
             },

@@ -29,9 +29,13 @@ public class Workspace implements Serializable {
     @ManyToOne
     private Project project;
 
-    @OneToMany(mappedBy = "workspace", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "workspace")
     @JsonIgnore
     private Set<WorkspaceColumn> workspaceColumns = new HashSet<>();
+
+    @OneToMany(mappedBy = "workspace")
+    @JsonIgnore
+    private Set<Task> tasks = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -91,6 +95,31 @@ public class Workspace implements Serializable {
 
     public void setWorkspaceColumns(Set<WorkspaceColumn> workspaceColumns) {
         this.workspaceColumns = workspaceColumns;
+    }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public Workspace tasks(Set<Task> tasks) {
+        this.tasks = tasks;
+        return this;
+    }
+
+    public Workspace addTask(Task task) {
+        this.tasks.add(task);
+        task.setWorkspace(this);
+        return this;
+    }
+
+    public Workspace removeTask(Task task) {
+        this.tasks.remove(task);
+        task.setWorkspace(null);
+        return this;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

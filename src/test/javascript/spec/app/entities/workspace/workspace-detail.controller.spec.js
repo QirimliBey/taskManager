@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Workspace Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockWorkspace, MockProject, MockWorkspaceColumn;
+        var MockEntity, MockPreviousState, MockWorkspace, MockProject, MockWorkspaceColumn, MockTask;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -15,6 +15,7 @@ describe('Controller Tests', function() {
             MockWorkspace = jasmine.createSpy('MockWorkspace');
             MockProject = jasmine.createSpy('MockProject');
             MockWorkspaceColumn = jasmine.createSpy('MockWorkspaceColumn');
+            MockTask = jasmine.createSpy('MockTask');
             
 
             var locals = {
@@ -24,7 +25,8 @@ describe('Controller Tests', function() {
                 'previousState': MockPreviousState,
                 'Workspace': MockWorkspace,
                 'Project': MockProject,
-                'WorkspaceColumn': MockWorkspaceColumn
+                'WorkspaceColumn': MockWorkspaceColumn,
+                'Task': MockTask
             };
             createController = function() {
                 $injector.get('$controller')("WorkspaceDetailController", locals);

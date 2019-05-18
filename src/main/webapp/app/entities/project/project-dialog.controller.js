@@ -35,6 +35,11 @@
             vm.isSaving = true;
             if (vm.project.id !== null) {
                 Project.update(vm.project, onSaveSuccess, onSaveError);
+
+                //addWorkspace method giving http err 405
+                /*Project.addWorkspace({id: vm.project.id}, function(data){
+                            vm.project.workspaces = data;
+                        });*/
             } else {
                 Project.save(vm.project, onSaveSuccess, onSaveError);
             }

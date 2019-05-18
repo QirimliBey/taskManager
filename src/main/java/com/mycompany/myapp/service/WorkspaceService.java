@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service;
 
+import com.mycompany.myapp.domain.Task;
 import com.mycompany.myapp.domain.Workspace;
 import com.mycompany.myapp.repository.WorkspaceRepository;
 import org.slf4j.Logger;
@@ -58,6 +59,19 @@ public class WorkspaceService {
     public Workspace findOne(Long id) {
         log.debug("Request to get Workspace : {}", id);
         return workspaceRepository.findOne(id);
+    }
+
+    /**
+     * Get workspace projects.
+     *
+     * @param id the id of the entity
+     * @param pageable the pagination information
+     * @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<Task> findWorkspaceTasks(Long id, Pageable pageable) {
+        log.debug("Request to get Workspace tasks");
+        return workspaceRepository.findAllTasksOfWorkspace(id, pageable);
     }
 
     /**

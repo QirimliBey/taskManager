@@ -155,7 +155,26 @@
                     $state.go('^');
                 });
             }]
-        });
+        })
+
+        .state('workspace.tasks', {
+                    parent: 'entity',
+                    url: '/tasks',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pageTitle: 'Tasks'
+                    },
+                    views: {
+                        'content@': {
+                            templateUrl: 'app/entities/task/tasks.html',
+                            controller: 'task.controller',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                    }
+                });
+
     }
 
 })();

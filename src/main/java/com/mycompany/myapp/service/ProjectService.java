@@ -80,13 +80,13 @@ public class ProjectService {
      * Get project workspaces.
      *
      * @param id the id of the entity
-     * @param pageble the pagination information
+     * @param pageable the pagination information
      * @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<Workspace> findProjectWorkspaces(Long id, Pageable pageble) {
+    public Page<Workspace> findProjectWorkspaces(Long id, Pageable pageable) {
         log.debug("Request to get Project workspaces");
-        return projectRepository.findAllWorkspacesOfProject(id, pageble);
+        return projectRepository.findAllWorkspacesOfProject(id, pageable);
     }
 
 
