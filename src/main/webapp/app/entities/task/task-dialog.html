@@ -8,12 +8,12 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.task.id">
+        <div has-authority="ROLE_ADMIN"  class="form-group" ng-show="vm.task.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.task.id" readonly />
         </div>
-        <div class="form-group">
+        <div has-authority="ROLE_ADMIN"  class="form-group">
             <label class="control-label" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="vm.task.name"
@@ -29,14 +29,16 @@
                     </span>
                 </div>
         </div>
-        <div class="form-group">
+        <div has-authority="ROLE_ADMIN" class="form-group">
             <label class="control-label" for="field_endDate">End Date</label>
-                <div class="input-group">
-                    <input id="field_endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.task.endDate" is-open="vm.datePickerOpenStatus.endDate"
-                    />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endDate')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
+                <div ng-switch="has-authority" class="input-group">
+                    <div>
+                        <input id="field_endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.task.endDate" is-open="vm.datePickerOpenStatus.endDate"
+                        />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
                 </div>
         </div>
         <div class="form-group">
@@ -50,13 +52,13 @@
                 </div>
         </div>
 
-        <div class="form-group">
+        <div has-authority="ROLE_ADMIN" class="form-group">
             <label for="field_client">Client</label>
             <select class="form-control" id="field_client" name="client" ng-model="vm.task.client" ng-options="client as client.name for client in vm.clients track by client.id">
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group">
+        <div has-authority="ROLE_ADMIN" class="form-group">
             <label for="field_task">Task</label>
             <select class="form-control" id="field_task" name="task" ng-model="vm.task.task" ng-options="task as task.name for task in vm.tasks track by task.id">
                 <option value=""></option>
@@ -68,7 +70,7 @@
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group">
+        <div has-authority="ROLE_ADMIN" class="form-group">
             <label for="field_workspace">Workspace</label>
             <select class="form-control" id="field_workspace" name="workspace" ng-model="vm.task.workspace" ng-options="workspace as workspace.name for workspace in vm.workspaces track by workspace.id">
                 <option value=""></option>
@@ -84,3 +86,5 @@
         </button>
     </div>
 </form>
+
+

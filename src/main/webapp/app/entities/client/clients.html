@@ -1,6 +1,6 @@
 <div>
     <jhi-alert></jhi-alert>
-    <div class="container-fluid">
+    <div has-authority="ROLE_ADMIN" class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
                 <button class="btn btn-primary" ui-sref="client.new" >
@@ -24,12 +24,12 @@
                     <p class="user-id"></p>
                     <p class="user-card-text">Developer</p>
                 </div>
-                <div class="button-row"><button ui-sref="client-detail({id:client.id})"><i class="far fa-id-card edit-btn"></i> Profile</button><button ui-sref="client.delete({id:client.id})"><i class="fas fa-trash-alt edit-btn red"></i> Remove</button></div>
+                <div class="button-row"><button ui-sref="client-detail({id:client.id})"><i class="far fa-id-card edit-btn"></i> Profile</button><button has-authority="ROLE_ADMIN" ui-sref="client.delete({id:client.id})"><i class="fas fa-trash-alt edit-btn red"></i> Remove</button></div>
             </div>
         </div>
 
     </div>
-
+</div>
 
 
 
@@ -89,4 +89,4 @@
         </table>
     </div>
 </div>-->
-</div>
+

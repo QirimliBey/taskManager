@@ -18,12 +18,13 @@
 
 .project_list{
     display: grid;
-    grid-template-columns: repeat(3, 270px);
+    grid-template-columns: repeat(auto-fill, minmax(263px, 1fr));
     grid-gap: 50px 80px;
 
     max-width: 950px;
 
     margin: 0 auto;
+    justify-items: center;
 }
 
 .project_list .project_block,
@@ -41,7 +42,12 @@
 
     vertical-align:top;
     vertical-align: bottom
+}
 
+.project_block:hover {
+box-shadow: 1px 2px 3px 0px rgba(25,25,25,0.6);
+opacity: 1;
+transition:all 0.5s ease;
 }
 
 .header {
@@ -92,8 +98,9 @@
 }
 
 .project_description {
-    text-align: center;
+    text-align: left;
 
+    padding-left: 10px;
     padding-top: 20px;
     margin-bottom: 60px;
 
@@ -101,15 +108,29 @@
     font-size: 20px;
 }
 
+ul{
+    list-style-type: none;
+}
+
+a, u{
+    text-decoration: none !important;
+}
+
+
 .buttons {
     position: absolute;
     bottom: 0;
-    left: 34px;
+    /*left: 34px;
+    padding-top: 20px;*/
 
-
-    padding-top: 20px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
     text-align: center;
+
+    background-color: #f2f2f2;
+
+
 }
 
 .project_open,
