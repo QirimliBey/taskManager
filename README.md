@@ -3,4 +3,4 @@ This application created by developer **Yunus Yunusov** and generated using **JH
 
 **TASKINATOR** is an application the case of which is to help to manage your projects. 
 
-This project management tool can be helpful for companies, developers group etc.
+This project management tool can be helpful for companies, developers groups etc.
