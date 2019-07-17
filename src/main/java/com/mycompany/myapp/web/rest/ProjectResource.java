@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Client;
 import com.mycompany.myapp.domain.Project;
 import com.mycompany.myapp.domain.Workspace;
+import com.mycompany.myapp.repository.ProjectRepository;
 import com.mycompany.myapp.service.ClientService;
 import com.mycompany.myapp.service.ProjectService;
 import com.mycompany.myapp.service.WorkspaceService;
