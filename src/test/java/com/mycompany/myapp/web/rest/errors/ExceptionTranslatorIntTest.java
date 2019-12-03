@@ -1,6 +1,6 @@
 package com.mycompany.myapp.web.rest.errors;
 
-import com.mycompany.myapp.TaskmanagerApp;
+import com.mycompany.myapp.TaskManagerApp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ExceptionTranslator
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TaskmanagerApp.class)
+@SpringBootTest(classes = TaskManagerApp.class)
 public class ExceptionTranslatorIntTest {
 
     @Autowired

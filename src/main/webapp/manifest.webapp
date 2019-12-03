@@ -1,6 +1,6 @@
 {
-  "name": "taskmanagerApp",
-  "short_name": "taskmanagerApp",
+  "name": "taskManagerApp",
+  "short_name": "taskManagerApp",
   "icons": [
       {
           "src": "/content/images/logo-jhipster.png",

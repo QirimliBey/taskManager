@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .controller('JhiHealthCheckController', JhiHealthCheckController);
 
     JhiHealthCheckController.$inject = ['JhiHealthService', '$uibModal'];

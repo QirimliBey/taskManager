@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .controller('SettingsController', SettingsController);
 
     SettingsController.$inject = ['Principal', 'Auth'];

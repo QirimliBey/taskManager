@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span>Task</span> {{vm.task.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.task.name}}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+            <span>{{vm.task.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+            <span>{{vm.task.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Finish Date</span></dt>
+        <dd>
+            <span>{{vm.task.finishDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Client</span></dt>
+        <dd>
+            <a ui-sref="client-detail({id:vm.task.client.id})">{{vm.task.client.name}}</a>
+        </dd>
+        <dt><span>Task</span></dt>
+        <dd>
+            <a ui-sref="task-detail({id:vm.task.task.id})">{{vm.task.task.name}}</a>
+        </dd>
+        <dt><span>Workspace Column</span></dt>
+        <dd>
+            <a ui-sref="workspace-column-detail({id:vm.task.workspaceColumn.id})">{{vm.task.workspaceColumn.name}}</a>
+        </dd>
+        <dt><span>Workspace</span></dt>
+        <dd>
+            <a ui-sref="workspace-detail({id:vm.task.workspace.id})">{{vm.task.workspace.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button has-authority="ROLE_ADMIN" type="button" ui-sref="task-detail.edit({id:vm.task.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

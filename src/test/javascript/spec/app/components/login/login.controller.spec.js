@@ -2,7 +2,7 @@
 
 describe('Controller Tests', function () {
 
-    beforeEach(module('taskmanagerApp'));
+    beforeEach(module('taskManagerApp'));
 
     describe('LoginController', function () {
         var $scope, authService;

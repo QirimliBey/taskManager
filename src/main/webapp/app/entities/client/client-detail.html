@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span>Client</span> {{vm.client.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.client.name}}</span>
+        </dd>
+        <dt><span>Project</span></dt>
+        <dd>
+            <span ng-repeat="project in vm.client.projects track by project.id">
+                <a ui-sref="project-detail({id: project.id})">{{project.name}}</a>{{$last ? '' : ', '}}
+            </span>
+            <!--<span>{{vm.client.projects[0].name}}</span>-->
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button has-authority="ROLE_ADMIN" type="button" ui-sref="client-detail.edit({id:vm.client.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .factory('JhiHealthService', JhiHealthService);
 
     JhiHealthService.$inject = ['$rootScope', '$http'];

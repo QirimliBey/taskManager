@@ -16,12 +16,14 @@
 
 spring:
     application:
-        name: taskmanager
+        name: TaskManager
     jackson:
         serialization.write_dates_as_timestamps: false
+    cache:
+        type: simple
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:taskmanager;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:TaskManager;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
@@ -86,7 +88,7 @@ jhipster:
     security:
         authentication:
             jwt:
-                secret: 5fe4b296de1a0f5464f52938c0b384d8e199bb84
+                secret: 72704d9526070f9db7135d4c79d830fcf708c651
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

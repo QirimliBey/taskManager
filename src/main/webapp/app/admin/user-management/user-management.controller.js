@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .controller('UserManagementController', UserManagementController);
 
     UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', 'AlertService', '$state', 'pagingParams', 'paginationConstants'];

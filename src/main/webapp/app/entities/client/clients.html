@@ -1,0 +1,92 @@
+<div>
+    <jhi-alert></jhi-alert>
+    <div has-authority="ROLE_ADMIN" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="client.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Client
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cards" infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+
+        <div class="user-card-item" ng-repeat="client in vm.clients track by client.id">
+            <div class="user-card">
+                <div class="user-card-pb card__image--fence"></div>
+                <div class="user-card-img"></div>
+                <div class="user-card-cont">
+                    <div class="user-card-title">{{client.name}}</div>
+                    <p class="user-id"></p>
+                    <p class="user-card-text">Developer</p>
+                </div>
+                <div class="button-row"><button ui-sref="client-detail({id:client.id})"><i class="far fa-id-card edit-btn"></i> Profile</button><button has-authority="ROLE_ADMIN" ui-sref="client.delete({id:client.id})"><i class="fas fa-trash-alt edit-btn red"></i> Remove</button></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!--<div>
+    <h2>Clients</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="client.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Client
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="client in vm.clients track by client.id">
+                    <td><a ui-sref="client-detail({id:client.id})">{{client.id}}</a></td>
+                    <td>{{client.name}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="client-detail({id:client.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="client.edit({id:client.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="client.delete({id:client.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>-->
+

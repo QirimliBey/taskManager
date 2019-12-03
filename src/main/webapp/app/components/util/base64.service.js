@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .factory('Base64', Base64);
 
     function Base64 () {

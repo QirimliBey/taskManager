@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .directive('jhSortBy', jhSortBy);
 
     function jhSortBy() {

@@ -1,0 +1,38 @@
+// JDL definition for application 'TaskManager' generated with command 'jhipster export-jdl'
+
+entity Project (project) {
+  name String
+}
+entity Client (client) {
+  name String
+}
+
+entity Workspace (workspace) {
+  name String,
+}
+
+entity WorkspaceColumn (workspaceColumn) {
+  name String,
+}
+
+entity Task (task) {
+  name String,
+  startDate LocalDate,
+  endDate LocalDate,
+  finishDate LocalDate
+}
+
+relationship ManyToOne {
+  Task{client(name)} to Client{task(name)},
+  Task{task(name)} to Task{subTasks(name)},
+  Workspace{project(name)} to Project{workspace(name)}
+  WorkspaceColumn{workspace(name)} to Workspace{workspaceColumn(name)}
+  Task{workspaceColumn(name)} to WorkspaceColumn{task(name)}
+  Task{workspace(name)} to Workspace{task(name)}
+}
+relationship ManyToMany {
+  Project{client(name)} to Client{project(name)}
+}
+
+paginate Project, Client, Task, Workspace, WorkspaceColumn with infinite-scroll
+service Project, Client, Task, Workspace, WorkspaceColumn with serviceClass

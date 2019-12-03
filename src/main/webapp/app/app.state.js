@@ -2,17 +2,23 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('app', {
+        $stateProvider
+        .state('app', {
             abstract: true,
             views: {
                 'navbar@': {
                     templateUrl: 'app/layouts/navbar/navbar.html',
+                    controller: 'NavbarController',
+                    controllerAs: 'vm'
+                },
+                'subbar@': {
+                    templateUrl: 'app/layouts/navbar/subbar.html',
                     controller: 'NavbarController',
                     controllerAs: 'vm'
                 }
@@ -24,6 +30,7 @@
                     }
                 ]
             }
-        });
+        }
+        );
     }
 })();

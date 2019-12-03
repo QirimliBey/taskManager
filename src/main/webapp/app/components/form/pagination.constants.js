@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .constant('paginationConstants', {
             'itemsPerPage': 20
         });

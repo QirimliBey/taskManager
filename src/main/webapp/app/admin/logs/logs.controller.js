@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .controller('LogsController', LogsController);
 
     LogsController.$inject = ['LogsService'];

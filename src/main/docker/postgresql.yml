@@ -3,9 +3,14 @@ services:
     taskmanager-postgresql:
         image: postgres:9.6.5
         # volumes:
-        #     - ~/volumes/jhipster/taskmanager/postgresql/:/var/lib/postgresql/data/
+        #     - ~/volumes/jhipster/TaskManager/postgresql/:/var/lib/postgresql/data/
         environment:
-            - POSTGRES_USER=taskmanager
-            - POSTGRES_PASSWORD=
+            - POSTGRES_USER=TaskManager
+            - POSTGRES_PASSWORD=111
         ports:
             - 5432:5432
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8099:8080

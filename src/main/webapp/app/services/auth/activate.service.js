@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .factory('Activate', Activate);
 
     Activate.$inject = ['$resource'];

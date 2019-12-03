@@ -1,7 +1,7 @@
 package com.mycompany.myapp.service;
 import com.mycompany.myapp.config.Constants;
 
-import com.mycompany.myapp.TaskmanagerApp;
+import com.mycompany.myapp.TaskManagerApp;
 import com.mycompany.myapp.domain.User;
 import io.github.jhipster.config.JHipsterProperties;
 import org.junit.Before;
@@ -30,7 +30,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TaskmanagerApp.class)
+@SpringBootTest(classes = TaskManagerApp.class)
 public class MailServiceIntTest {
 
     @Autowired

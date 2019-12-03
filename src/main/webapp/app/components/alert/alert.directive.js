@@ -11,7 +11,7 @@
     };
 
     angular
-        .module('taskmanagerApp')
+        .module('taskManagerApp')
         .component('jhiAlert', jhiAlert);
 
     jhiAlertController.$inject = ['$scope', 'AlertService'];

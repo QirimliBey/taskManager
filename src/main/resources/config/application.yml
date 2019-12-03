@@ -26,7 +26,7 @@ management:
             enabled: false # When using the MailService, configure an SMTP server and set this to true
 spring:
     application:
-        name: taskmanager
+        name: TaskManager
     profiles:
         # The commented value for `active` can be replaced with valid Spring profiles to load.
         # Otherwise, it will be filled in by maven when building the WAR file
@@ -81,11 +81,11 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: taskmanager@localhost
+        from: TaskManager@localhost
     swagger:
         default-include-pattern: /api/.*
-        title: taskmanager API
-        description: taskmanager API documentation
+        title: TaskManager API
+        description: TaskManager API documentation
         version: 0.0.1
         terms-of-service-url:
         contact-name:
